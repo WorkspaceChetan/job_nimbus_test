@@ -28,7 +28,7 @@ export const isValidBracketString = (str: string) => {
 
     if (!isValid) return false;
 
-    if (isContainsBraces(str2)) return false;
+    // if (isContainsBraces(str2)) return false;
   } else {
     if (isContainsBraces(str)) return false;
   }
