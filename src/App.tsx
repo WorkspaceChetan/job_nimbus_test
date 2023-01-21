@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import "./App.css";
-import { GenericUtils } from "./utils/GenericUtils";
+import { GenericUtils } from "./utils";
 
 function App() {
   const [text, setText] = useState("");

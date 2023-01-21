@@ -1,4 +1,4 @@
-import { GenericUtils } from "./GenericUtils";
+import { GenericUtils } from ".";
 
 describe("Checking entered string is valid curly brackets or not", () => {
   test("Pass parameter as '{}' should be TRUE", () => {

@@ -1,5 +1,5 @@
 export class GenericUtils {
-  public static isContainsBraces = ({ input }: { input: string }): boolean => {
+  private static isContainsBraces = ({ input }: { input: string }): boolean => {
     return input.includes("{") || input.includes("}");
   };
 
@@ -15,7 +15,7 @@ export class GenericUtils {
 
     if (!this.isContainsBraces({ input })) return true;
 
-    let matchesData = input.match(reg);
+    const matchesData = input.match(reg);
 
     if (matchesData && matchesData.length) {
       let isValid = true;
