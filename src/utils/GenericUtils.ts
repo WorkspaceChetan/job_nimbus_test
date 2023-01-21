@@ -1,33 +1,39 @@
-const isContainsBraces = (str: string) => {
-  return str.includes("{") || str.includes("}");
-};
+export class GenericUtils {
+  public static isContainsBraces = ({ input }: { input: string }): boolean => {
+    return input.includes("{") || input.includes("}");
+  };
 
-export const isValidBracketString = (str: string) => {
-  str = str.replace("{}", "");
-  let str2 = str;
-  const reg = /\{([^}]+)\}/g;
+  public static isValidBracketString = ({
+    input,
+  }: {
+    input: string;
+  }): boolean => {
+    let text = input;
 
-  if (!isContainsBraces(str)) return true;
+    input = input.replace("{}", "");
+    const reg = /\{([^}]+)\}/g;
 
-  let matchesData = str.match(reg);
+    if (!this.isContainsBraces({ input })) return true;
 
-  if (matchesData && matchesData.length) {
-    let isValid = true;
-    matchesData.forEach((x) => {
-      str2 = str2.replace(x, "");
-      x = x.replace("{", "").replace("}", "");
+    let matchesData = input.match(reg);
 
-      if (isContainsBraces(x)) {
-        isValid = false;
-        return;
-      }
-    });
+    if (matchesData && matchesData.length) {
+      let isValid = true;
+      matchesData.forEach((x) => {
+        text = text.replace(x, "");
+        x = x.replace("{", "").replace("}", "");
 
-    if (!isValid) return false;
+        if (this.isContainsBraces({ input: x })) {
+          isValid = false;
+          return;
+        }
+      });
 
-  } else {
-    if (isContainsBraces(str)) return false;
-  }
+      if (!isValid) return false;
+    } else {
+      if (this.isContainsBraces({ input })) return false;
+    }
 
-  return true;
-};
+    return true;
+  };
+}
